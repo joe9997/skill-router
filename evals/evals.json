@@ -1,0 +1,102 @@
+{
+  "skill_name": "skill-router",
+  "notes": "Expected skill names assume those skills are installed. `expected_skill: null` with `expected_behavior: direct` means the router must NOT load a skill; `expected_behavior: ask` means it should ask exactly one disambiguating question before routing.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把这个季度的销售数据做成一份汇报 PPT",
+      "expected_skill": "ppt-master",
+      "expected_behavior": "route",
+      "expected_output": "Routes to the deck-building skill based on the .pptx deliverable, announces the choice in one line, then starts the deck.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "这个 xlsx 我只想保留第 3 个工作表，另存成一个新文件",
+      "expected_skill": "office-transform",
+      "expected_behavior": "route",
+      "expected_output": "Routes to the office file transform skill; does not hand-roll openpyxl code.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "CI 上 test_checkout 偶尔失败，本地复现不了，帮我查查为什么",
+      "expected_skill": "diagnosing-bugs",
+      "expected_behavior": "route",
+      "expected_output": "Routes to the debugging skill rather than a generic research skill; prefers the specific workflow over the general one.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "看看这个 PR 的改动符不符合我们的规范",
+      "expected_skill": "code-review",
+      "expected_behavior": "route",
+      "expected_output": "Routes to the code review skill; does not confuse 'review' with 'research'.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "调研一下竞品的定价策略，然后做成一份给管理层的 PPT",
+      "expected_skill": "research -> ppt-master",
+      "expected_behavior": "chain",
+      "expected_output": "Recognizes a two-skill chain, announces the sequence, caps it at two skills.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "读一下这篇文章，帮我判断它的基准测试数据可不可信",
+      "expected_skill": null,
+      "expected_behavior": "direct",
+      "expected_output": "No skill applies. The source is provided, so it is not a research task. Answers directly.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "我们的 React 组件测试里全是 as 类型断言，想换掉",
+      "expected_skill": "migrate-to-shoehorn",
+      "expected_behavior": "route",
+      "expected_output": "Routes to the specific migration skill, not the general testing skill, even though tests are mentioned.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "写个 fibonacci 函数",
+      "expected_skill": null,
+      "expected_behavior": "direct",
+      "expected_output": "Fast path: one-step edit, no artifact, no workflow. Answers directly without narrating routing.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "帮我处理一下这个视频",
+      "expected_skill": null,
+      "expected_behavior": "ask",
+      "expected_output": "Two or more plausible skills (analysis / transcription / editing) with no clear leader. Asks exactly one compact question with concrete options.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "用 ppt-master 把这份大纲做成幻灯片",
+      "expected_skill": "ppt-master",
+      "expected_behavior": "route",
+      "expected_output": "User named the skill. Invokes it immediately, no scoring, no alternative candidates.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "这个功能还没写，帮我先想清楚模块接口再动手",
+      "expected_skill": "codebase-design",
+      "expected_behavior": "route",
+      "expected_output": "Routes to design vocabulary. States the choice and proceeds rather than asking, because the request disambiguates the phase.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "别用技能，直接把 README 里那个拼写错误改了",
+      "expected_skill": null,
+      "expected_behavior": "direct",
+      "expected_output": "Honors the explicit opt-out. Makes the one-line edit without routing.",
+      "files": []
+    }
+  ]
+}
