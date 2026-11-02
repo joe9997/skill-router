@@ -59,14 +59,14 @@ skill 的本质是一个包含 `SKILL.md` 的文件夹，放到运行时的 skil
 ### Cherry Studio
 
 ```bash
-git clone https://github.com/<your-name>/skill-router.git
+git clone https://github.com/joe9997/skill-router.git
 cp -r skill-router "$CHERRY_STUDIO_SKILLS_DIR/skill-router"
 ```
 
 Windows PowerShell：
 
 ```powershell
-git clone https://github.com/<your-name>/skill-router.git
+git clone https://github.com/joe9997/skill-router.git
 Copy-Item -Recurse .\skill-router "$env:APPDATA\CherryStudio\Data\Skills\skill-router"
 ```
 
@@ -75,7 +75,7 @@ Copy-Item -Recurse .\skill-router "$env:APPDATA\CherryStudio\Data\Skills\skill-r
 用户级（所有项目可用）：
 
 ```bash
-git clone https://github.com/<your-name>/skill-router.git
+git clone https://github.com/joe9997/skill-router.git
 cp -r skill-router ~/.claude/skills/skill-router
 ```
 
@@ -214,7 +214,7 @@ CI 会在 Python 3.9 / 3.11 / 3.13 上跑这两条。没有任何第三方依赖
 It is not magic: runtimes already expose skill descriptions to the model. This skill adds an explicit, repeatable decision procedure, a scanner for runtimes that don't, and a short audit trail.
 
 ```bash
-git clone https://github.com/<your-name>/skill-router.git
+git clone https://github.com/joe9997/skill-router.git
 cp -r skill-router ~/.claude/skills/skill-router   # or your runtime's skills dir
 ```
 
